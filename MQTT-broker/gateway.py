@@ -1,10 +1,11 @@
 # Filename: gateway.py
-# MQTT broker is a Raspberry running a python broker. 
+# MQTT broker is using a Raspberry running python broker. 
 # Connected to the LAN, It reads some JSON data from microcontroller/Temp sensor 
 # and reformat another JSON data structure which can be consumed by MongoDB. 
 # This broker is a MQTT listener and receive publications, here the RPI is acting 
 # as a gateway prior pushing data to IoT database using MongoDB. 
-# Potentially many sensors can broadcast data to this gateway before it gets stored in the Cloud.
+# Potentially many sensors can broadcast data to this gateway before it gets 
+# stored in the Cloud.
 
 
 import hashlib;
