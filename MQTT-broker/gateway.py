@@ -28,7 +28,7 @@ def on_message(client, userdata, msg):
 
     body='{ "device":"' + str(sample['device']) + '", "sample_date" : "' + time_t.strftime("%Y-%m-%d") + '", "value":"' + str(sample['value']) + '", "time":"' + repr(timestamp_utc) + '" }'
     print("Message: " + body)
-    secret = 'mongodbrocks' #b'Enter your MongoDB Stitch Webhook password here'
+    secret = 'xxxxxx' #b'Enter your MongoDB Stitch Webhook password here'
     hash = hmac.new(bytes(secret, 'latin-1'), body.encode("utf-8"), hashlib.sha256)
     url = 'https://webhooks.mongodb-stitch.com/api/client/v2.0/app/connecteddevices-xmzek/service/iotreceivedata/incoming_webhook/savesensordata' #enter your Stitch Web API URL here
     header={"Content-Type":"application/json","X-Hook-Signature":"sha256=" + hash.hexdigest()  }
