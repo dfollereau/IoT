@@ -10,7 +10,7 @@ Schematics : VCC/GND and for i2c: D1-SCL and D2-SDA
 <img src="../img/esp8266.jpg" width="600" height="400"/>
 
 <br>
-Interesting links:
+Interesting links:<br>
 - https://microcontrollerslab.com/led-blinking-using-esp8266-nodemcu/
 - https://myesp8266.blogspot.com/2016/12/bmp280-and-esp8266.html
 - https://blog.bandinelli.net/index.php?post/2016/10/23/Micropython-sur-ESP8266%2C-l-%C3%A9lectronique-toujours-plus-libre-et-puissante-%21
