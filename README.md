@@ -2,7 +2,7 @@
 
 Home automation and DIY experiment using Raspberry, Arduino and Microcontroller.
 
-<img src="./esp8266.jpg" width="300" height="200"/>    <img src="./rpi.jpg" width="280" height="260"/>    <img src="./mongodb-logo.png" width="280" height="260"/>
+<img src="./esp8266.jpg" width="300" height="200"/>    <img src="./rpi.jpg" width="280" height="260"/>    <img src="./img/mongodb-logo.png" width="280" height="260"/>
 
 This lab is three tier architecture:
 
