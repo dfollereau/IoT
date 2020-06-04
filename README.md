@@ -1,10 +1,11 @@
 # IoT
 
 Home automation and DIY experiment using Raspberry, Arduino and Microcontroller.
+The lab proposed here is to push (any) sensor data from the microchop to the Cloud. The public Cloud selected by MongoCloud will be Azure (EU instance for more proximity with my home) but you can instance the same IOT db in AWS or GCP.
 
 <img src="./img/esp8266.jpg" width="300" height="200"/>    <img src="./img/rpi.jpg" width="280" height="260"/>    <img src="./img/mongodb-logo.png" width="280" height="260"/>
 
-This lab is three tier architecture:
+This end to end example/sample looks like a 3 tier architecture:
 
   1- Microcontroller ESP8266 is having a temperature sensor (BMP280) using I2C bus. This microchip is connected in Wifi to the LAN and is executing a C program: Getting temperature, call NTP to get an appropriate date/time, formatting a simple JSON data struct and broadcast it to MQTT broker.
 
