@@ -1,7 +1,7 @@
 # IoT
 
 Home automation and DIY experiment using Raspberry, Arduino and Microcontroller.
-The lab proposed here is to push (any) sensor data from the microchop to the Cloud. The public Cloud selected by MongoCloud will be Azure (EU instance for more proximity with my home) but you can instance the same IOT db in AWS or GCP.
+<br>The lab proposed here is to push (any) sensor data from the microchip to the Cloud. The public Cloud selected by MongoCloud will be Azure (EU instance for more proximity with my home) but you can instance the same IOT db in AWS or GCP. Once the data is in the Cloud, the implementation can continue with graph, automation scenario etc...
 
 <img src="./img/esp8266.jpg" width="300" height="200"/>    <img src="./img/rpi.jpg" width="280" height="260"/>    <img src="./img/mongodb-logo.png" width="280" height="260"/>
 
