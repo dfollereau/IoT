@@ -12,4 +12,4 @@ This lab is three tier architecture:
 
   3- MongoDB Cloud running over Azure (remote EU instance!) is receiving documents via webhook Stitch: sensor name, value and date/time. Charts or any other graphical representation can be used grabbing data from MongoDB.
 
-It becomes pretty to extend with more sensors, more charts and add some logics to create home automation scenarios.
+It becomes easy to extend with more sensors, more charts. Each sensor should target the MQTT broker publishing messages with its own topic.
