@@ -14,8 +14,8 @@
 #include <Ticker.h>
 #include <AsyncMqttClient.h>
 
-#define WIFI_SSID "Follereau_family"
-#define WIFI_PASSWORD "987654321123456789"
+#define WIFI_SSID "myssid"
+#define WIFI_PASSWORD "mypwd"
 
 // Raspberri Pi Mosquitto MQTT Broker
 #define MQTT_HOST IPAddress(192, 168, 1, 73)
@@ -102,7 +102,7 @@ void setup() {
   Serial.begin(115200);
   Serial.println();
   
-  // Initialize BME280 sensor 
+  // Initialize BMP280 sensor 
   if (!bmp.begin(0x76)) {
     Serial.println("Could not find a valid BMP280 sensor, check wiring!");
     while (1);
