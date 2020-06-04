@@ -14,8 +14,8 @@
 #include <Ticker.h>
 #include <AsyncMqttClient.h>
 
-#define WIFI_SSID "myssid"
-#define WIFI_PASSWORD "mypwd"
+#define WIFI_SSID "define here your ssid"
+#define WIFI_PASSWORD "define here password to access your LAN"
 
 // Raspberri Pi Mosquitto MQTT Broker
 #define MQTT_HOST IPAddress(192, 168, 1, 73)
@@ -29,7 +29,7 @@
 // BMP280 I2C
 Adafruit_BMP280 bmp;
 // Variables to hold sensor readings
-float temp;
+float temp = 0;
 
 AsyncMqttClient mqttClient;
 Ticker mqttReconnectTimer;
@@ -42,7 +42,7 @@ unsigned long previousMillis = 0;   // Stores last time temperature was publishe
 const long interval = 10000;        // Interval at which to publish sensor readings
 
 WiFiUDP ntpUDP;
-NTPClient timeClient(ntpUDP, "europe.pool.ntp.org", 3600, 60000);
+NTPClient timeClient(ntpUDP, "europe.pool.ntp.org", 3600, 60000); // select EU time zone
 
 void connectToWifi() {
   Serial.println("Connecting to Wi-Fi...");
@@ -126,6 +126,7 @@ void setup() {
 
 void loop() {
   timeClient.update();
+  // Other functions proposed by NTPClient
   //Serial.println("getFormattedTime="+ String(timeClient.getFormattedTime()));
   //Serial.println("getEpochTime="+ String(timeClient.getEpochTime()));
   
