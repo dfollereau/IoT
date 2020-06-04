@@ -2,6 +2,8 @@
 
 Home automation and DIY experiment using Raspberry, Arduino and Microcontroller.
 
+<img src="./esp8266.jpg" width="300" height="200"/>    <img src="./rpi.jpg" width="280" height="260"/>    <img src="./mongodb-logo.png" width="280" height="260"/>
+
 This lab is three tier architecture:
 
   1- Microcontroller ESP8266 is having a temperature sensor (BMP280) using I2C bus. This microchip is connected in Wifi to the LAN and is executing a C program: Getting temperature, call NTP to get an appropriate date/time, formatting a simple JSON data struct and broadcast it to MQTT broker.
