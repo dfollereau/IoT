@@ -34,7 +34,7 @@ def on_message(client, userdata, msg):
     time_t = datetime.now()
     timestamp_utc = calendar.timegm(time_t.timetuple())
     #anEpochTime = repr(timestamp_utc)
-    dt_object = datetime.fromtimestamp(float(sample['time']))
+    dt_object = datetime.utcfromtimestamp(float(sample['time']))
     print("dt_object =", dt_object)
     #print('Processing Temperature : ' + str(sample['value']))
 
