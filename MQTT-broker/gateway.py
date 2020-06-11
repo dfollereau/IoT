@@ -22,7 +22,7 @@ mqqt_server = '192.168.1.73' #Local IP allocated by you or your DHCP/Box for the
 mqqt_port = 1883
 
 def on_connect(mqttc, obj, flags, rc):
-    print("Connected with result code "+str(rc))
+    #print("Connected with result code "+str(rc))
     client.subscribe("/iotdemo/temp")
 
 # The callback for when a PUBLISH message is received from the server.
@@ -35,12 +35,12 @@ def on_message(client, userdata, msg):
     timestamp_utc = calendar.timegm(time_t.timetuple())
     #anEpochTime = repr(timestamp_utc)
     dt_object = datetime.utcfromtimestamp(float(sample['time']))
-    print("UTC timestamp recv from ESP8266 =", dt_object)
+    print("UTC timestamp recv from ESP8266 Epoch time=", dt_object)
     #print('Processing Temperature : ' + str(sample['value']))
 
     body='{ "device":"' + str(sample['device']) + '", "sample_date" : "' + time_t.strftime("%Y-%m-%d") + '", "value":"' + str(sample['value']) + '", "time":"' + str(sample['time']) + '" }'
     print("Message: " + body)
-    secret = 'mongodbrocks' #'MongoDB Stitch Webhook secret'
+    secret = 'xxxx' #'MongoDB Stitch Webhook secret'
     hash = hmac.new(bytes(secret, 'latin-1'), body.encode("utf-8"), hashlib.sha256)
     url = 'https://webhooks.mongodb-stitch.com/api/client/v2.0/app/connecteddevices-xmzek/service/iotreceivedata/incoming_webhook/savesensordata'
     header={"Content-Type":"application/json","X-Hook-Signature":"sha256=" + hash.hexdigest()  }
@@ -49,14 +49,14 @@ def on_message(client, userdata, msg):
 
 
 # uncomment to debug
-def on_log(mqttc, obj, level, string):
-    print(string)
+#def on_log(mqttc, obj, level, string):
+#    print(string)
 
-print('Connecting to MQQT broker')
+#print('Connecting to MQQT broker')
 client = mqtt.Client()
 client.on_message = on_message
 client.on_connect = on_connect
-client.on_log = on_log
+#client.on_log = on_log
 client.connect(mqqt_server, mqqt_port, 60)
 client.loop_forever()
 
