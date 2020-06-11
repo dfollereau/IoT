@@ -36,7 +36,8 @@ def on_message(client, userdata, msg):
 
     #print('Processing sample : ' + str(sample['value']))
 
-    body='{ "device":"' + str(sample['device']) + '", "sample_date" : "' + time_t.strftime("%Y-%m-%d") + '", "value":"' + str(sample['value']) + '", "time":"' + repr(timestamp_utc) + '" }'
+    #body='{ "device":"' + str(sample['device']) + '", "sample_date" : "' + time_t.strftime("%Y-%m-%d") + '", "value":"' + str(sample['value']) + '", "time":"' + repr(timestamp_utc) + '" }'
+    body='{ "device":"' + str(sample['device']) + '", "sample_date" : "' + time_t.strftime("%Y-%m-%d") + '", "value":"' + str(sample['value']) + '", "time":"' + str(sample['time']) + '" }'
     print("Message: " + body)
     secret = 'xxxxxx' #'MongoDB Stitch Webhook password here'
     hash = hmac.new(bytes(secret, 'latin-1'), body.encode("utf-8"), hashlib.sha256)
