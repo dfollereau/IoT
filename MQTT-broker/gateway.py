@@ -18,7 +18,7 @@ import requests
 from datetime import date
 from datetime import datetime
 
-mqqt_server = '192.168.1.73' #IP allocated by you or your DHCP/Box for the MQTT gateway
+mqqt_server = '192.168.1.73' #Local IP allocated by you or your DHCP/Box for the MQTT gateway
 mqqt_port = 1883
 
 def on_connect(mqttc, obj, flags, rc):
@@ -33,15 +33,16 @@ def on_message(client, userdata, msg):
 
     time_t = datetime.now()
     timestamp_utc = calendar.timegm(time_t.timetuple())
+    #anEpochTime = repr(timestamp_utc)
+    dt_object = datetime.fromtimestamp(sample['time'])
+    print("dt_object =", dt_object)
+    #print('Processing Temperature : ' + str(sample['value']))
 
-    #print('Processing sample : ' + str(sample['value']))
-
-    #body='{ "device":"' + str(sample['device']) + '", "sample_date" : "' + time_t.strftime("%Y-%m-%d") + '", "value":"' + str(sample['value']) + '", "time":"' + repr(timestamp_utc) + '" }'
     body='{ "device":"' + str(sample['device']) + '", "sample_date" : "' + time_t.strftime("%Y-%m-%d") + '", "value":"' + str(sample['value']) + '", "time":"' + str(sample['time']) + '" }'
     print("Message: " + body)
-    secret = 'xxxxxx' #'MongoDB Stitch Webhook password here'
+    secret = 'mongodbrocks' #'MongoDB Stitch Webhook secret'
     hash = hmac.new(bytes(secret, 'latin-1'), body.encode("utf-8"), hashlib.sha256)
-    url = 'https://webhooks.mongodb-stitch.com/api/client/v2.0/app/connecteddevices-xmzek/service/iotreceivedata/incoming_webhook/savesensordata' #enter your Stitch Web API URL here
+    url = 'https://webhooks.mongodb-stitch.com/api/client/v2.0/app/connecteddevices-xmzek/service/iotreceivedata/incoming_webhook/savesensordata'
     header={"Content-Type":"application/json","X-Hook-Signature":"sha256=" + hash.hexdigest()  }
     myResponse = requests.post(url,headers=header, data=body )
     #print (myResponse.status_code)
