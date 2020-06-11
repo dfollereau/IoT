@@ -35,7 +35,7 @@ def on_message(client, userdata, msg):
     timestamp_utc = calendar.timegm(time_t.timetuple())
     #anEpochTime = repr(timestamp_utc)
     dt_object = datetime.utcfromtimestamp(float(sample['time']))
-    print("dt_object =", dt_object)
+    print("UTC timestamp recv from ESP8266 =", dt_object)
     #print('Processing Temperature : ' + str(sample['value']))
 
     body='{ "device":"' + str(sample['device']) + '", "sample_date" : "' + time_t.strftime("%Y-%m-%d") + '", "value":"' + str(sample['value']) + '", "time":"' + str(sample['time']) + '" }'
