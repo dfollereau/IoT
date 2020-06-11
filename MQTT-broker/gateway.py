@@ -22,7 +22,7 @@ mqqt_server = '192.168.1.73' #Local IP allocated by you or your DHCP/Box for the
 mqqt_port = 1883
 
 def on_connect(mqttc, obj, flags, rc):
-    #print("Connected with result code "+str(rc))
+    print("Connected with result code "+str(rc))
     client.subscribe("/iotdemo/temp")
 
 # The callback for when a PUBLISH message is received from the server.
@@ -49,14 +49,14 @@ def on_message(client, userdata, msg):
 
 
 # uncomment to debug
-#def on_log(mqttc, obj, level, string):
-#    print(string)
+def on_log(mqttc, obj, level, string):
+    print(string)
 
-#print('Connecting to MQQT broker')
+print('Connecting to MQQT broker')
 client = mqtt.Client()
 client.on_message = on_message
 client.on_connect = on_connect
-#client.on_log = on_log
+client.on_log = on_log
 client.connect(mqqt_server, mqqt_port, 60)
 client.loop_forever()
 
